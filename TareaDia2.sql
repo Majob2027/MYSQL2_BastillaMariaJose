@@ -274,10 +274,10 @@ select nombre , apellido1 , apellido2 , nif , id_departamento
 from empleado
 where id_departamento IN (2, 4, 5);
 
+
+
 -- Consultas multitabla 
-
-
-
+-- Consulta #1
 SELECT 
     e.nombre AS empleado_nombre, 
     d.id AS departamento_id, 
@@ -290,6 +290,209 @@ INNER JOIN
     departamento d 
 ON 
     e.id_departamento = d.id;
+
+-- Consulta #2
+
+SELECT 
+    d.nombre AS departamento_nombre,
+    e.nombre, 
+    e.apellido1,
+    e.apellido2,
+    d.id AS departamento_id, 
+    d.presupuesto, 
+    d.gastos 
+FROM 
+    empleado e 
+INNER JOIN 
+    departamento d 
+ON 
+    e.id_departamento = d.id
+order by d.presupuesto ,nombre , apellido1 , apellido2 asc;
+
+-- Consulta #3
+SELECT d.id, d.nombre
+FROM departamento d
+WHERE EXISTS (
+    SELECT 1
+    FROM empleado e
+    WHERE e.id_departamento = d.id
+);
+
+-- Consulta #4
+SELECT d.id, d.nombre, (d.presupuesto - d.gastos) AS presupuesto_actual
+FROM departamento d
+WHERE EXISTS (
+    SELECT 1
+    FROM empleado e
+    WHERE e.id_departamento = d.id
+);
+
+
+-- Consulta #5
+SELECT d.nombre
+FROM empleado e
+JOIN departamento d ON e.id_departamento = d.id
+WHERE e.nif = '38382980M';
+
+-- Consulta #6
+SELECT d.nombre
+FROM empleado e
+JOIN departamento d ON e.id_departamento = d.id
+WHERE e.nombre = 'Pepe' AND e.apellido1 = 'Ruiz' AND e.apellido2 = 'Santana';
+
+-- Consulta #7
+
+SELECT d.id, d.nombre, d.presupuesto, d.gastos, e.id AS id_empleado, e.nif, e.nombre, e.apellido1, e.apellido2
+FROM departamento d
+INNER JOIN empleado e ON d.id = e.id_departamento
+where id_departamento = 5;
+
+-- Consulta #8
+
+SELECT e.id AS id_empleado, e.nif, e.nombre, e.apellido1, e.apellido2
+FROM empleado e
+INNER JOIN departamento d ON e.id_departamento = d.id
+where id_departamento in (2, 4 ,5);
+
+-- Consulta #9
+
+SELECT e.nombre
+FROM empleado e
+INNER JOIN departamento d ON e.id_departamento = d.id
+where presupuesto not between 100000 and 200000;
+
+-- Consultas #10
+
+SELECT d.nombre
+FROM departamento d
+INNER JOIN empleado e ON d.id = e.id_departamento
+WHERE e.apellido2 IS NULL;
+
+-- Consultas multitabla
+
+
+-- Consulta #1
+
+SELECT d.id, d.nombre, d.presupuesto, d.gastos, e.id AS id_empleado, e.nif, e.nombre, e.apellido1, e.apellido2
+FROM departamento d
+right JOIN empleado e ON d.id = e.id_departamento;
+
+-- Consulta #2
+
+SELECT  e.id AS id_empleado, e.nif, e.nombre, e.apellido1, e.apellido2
+FROM departamento d
+right JOIN empleado e ON d.id = e.id_departamento
+WHERE e.id_departamento IS NULL;
+
+-- Consulta #3
+
+SELECT d.id, d.nombre
+FROM departamento d
+LEFT JOIN empleado e ON d.id = e.id_departamento
+WHERE e.id_departamento IS NULL;
+
+-- Consulta #4
+
+SELECT d.id, d.nombre, d.presupuesto, d.gastos, e.id AS id_empleado, e.nif, e.nombre, e.apellido1, e.apellido2
+FROM departamento d
+left JOIN empleado e ON d.id = e.id_departamento
+order by d.nombre asc;
+
+-- Consulta #5
+
+-- Empleados sin departamento
+SELECT e.nombre AS entidad_nombre, 'Empleado' AS tipo, NULL AS departamento_nombre
+FROM empleado e
+WHERE e.id_departamento IS NULL
+
+UNION
+
+-- Departamentos sin empleados
+SELECT d.nombre AS entidad_nombre, 'Departamento' AS tipo, d.nombre AS departamento_nombre
+FROM departamento d
+LEFT JOIN empleado e ON d.id = e.id_departamento
+WHERE e.id_departamento IS NULL
+
+ORDER BY departamento_nombre;
+
+-- Consultas Resumen
+
+-- Consulta #1
+
+select sum(presupuesto)
+from departamento;
+
+-- Consulta #2
+
+select avg(presupuesto)
+from departamento;
+
+-- Consulta #3
+
+
+select min(presupuesto)
+from departamento;
+
+-- Consulta #4
+
+SELECT d.nombre, d.presupuesto
+FROM departamento d
+WHERE d.presupuesto = (SELECT MIN(presupuesto) FROM departamento)
+limit 1;
+
+-- Consulta #5
+
+select max(presupuesto)
+from departamento;
+
+
+-- Consulta #6
+
+SELECT d.nombre, d.presupuesto
+FROM departamento d
+WHERE d.presupuesto = (SELECT max(presupuesto) FROM departamento);
+
+-- Consulta #7
+
+select count(id)
+from empleado;
+
+-- Consulta #8
+
+select count(id)
+from empleado
+where apellido2 is not null;
+
+-- Consulta #9
+
+SELECT d.nombre AS departamento, COUNT(e.id) AS id_empleado
+FROM departamento d
+LEFT JOIN empleado e ON d.id = e.id_departamento
+GROUP BY d.nombre;
+
+-- Consulta #10
+
+
+SELECT d.nombre AS departamento, COUNT(e.id) AS id_empleado
+FROM departamento d
+LEFT JOIN empleado e ON d.id = e.id_departamento
+GROUP BY d.nombre
+HAVING COUNT(e.id) >= 2;
+
+-- Consulta #11
+
+SELECT d.nombre AS departamento, COUNT(e.id) AS id_empleado
+FROM departamento d
+LEFT JOIN empleado e ON d.id = e.id_departamento
+GROUP BY d.nombre;
+
+-- Consulta #12
+
+SELECT d.nombre AS departamento, COUNT(e.id) AS num_empleados
+FROM departamento d
+INNER JOIN empleado e ON d.id = e.id_departamento
+WHERE d.presupuesto > 200000
+GROUP BY d.nombre;
 
 
 
