@@ -532,7 +532,7 @@ AND CURDATE() BETWEEN '2024-06-01' AND '2024-06-30';
 -- • Alquiler de vehículos.
 
 select *
-from vehiculos;
+from alquileres;
 
 
 
