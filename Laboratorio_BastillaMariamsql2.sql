@@ -416,7 +416,7 @@ VALUES
 (23, 23, 23, 23, 3, 4, '2024-06-23', '2024-06-30', '2024-06-29', 1200.00, 160.00, 15.00, 1420.00, 1217.60),
 (24, 24, 24, 24, 4, 5, '2024-06-24', '2024-07-01', '2024-06-30', 1500.00, 200.00, 20.00, 1780.00, 1527.20),
 (25, 25, 25, 25, 5, 1, '2024-06-25', '2024-07-02', '2024-07-01', 1300.00, 180.00, 10.00, 1480.00, 1339.20),
-(26, 26, 26, 26, 1, 2, '2024-06-26', '2024-07-03', '2024-07-02', 1100.00, 150.00, 5.00, 1240.00, 1172.00),
+(26, 26, 91, 26, 1, 2, '2024-06-26', '2024-07-03', '2024-07-02', 1100.00, 150.00, 5.00, 1240.00, 1172.00),
 (27, 27, 27, 27, 2, 3, '2024-06-27', '2024-07-04', '2024-07-03', 950.00, 130.00, 10.00, 1080.00, 972.00),
 (28, 28, 28, 28, 3, 4, '2024-06-28', '2024-07-05', '2024-07-04', 850.00, 120.00, 5.00, 1020.00, 969.00),
 (29, 29, 29, 29, 4, 5, '2024-06-29', '2024-07-06', '2024-07-05', 750.00, 100.00, 10.00, 850.00, 765.00),
@@ -440,7 +440,7 @@ VALUES
 (47, 47, 47, 47, 2, 3, '2024-07-17', '2024-07-24', '2024-07-23', 2200.00, 260.00, 10.00, 2460.00, 2214.00),
 (48, 48, 48, 48, 3, 4, '2024-07-18', '2024-07-25', '2024-07-24', 2400.00, 280.00, 5.00, 2640.00, 2376.00),
 (49, 49, 49, 49, 4, 5, '2024-07-19', '2024-07-26', '2024-07-25', 2600.00, 300.00, 10.00, 2900.00, 2610.00),
-(50, 50, 50, 50, 5, 1, '2024-07-20', '2024-07-27', '2024-07-26', 2800.00, 320.00, 15.00, 3200.00, 2720.00),
+(50, 50, 91, 50, 5, 1, '2024-07-20', '2024-07-27', '2024-07-26', 2800.00, 320.00, 15.00, 3200.00, 2720.00),
 (51, 51, 51, 51, 1, 2, '2024-07-21', '2024-07-28', '2024-07-27', 3000.00, 340.00, 20.00, 3600.00, 2880.00),
 (52, 52, 52, 52, 2, 3, '2024-07-22', '2024-07-29', '2024-07-28', 3200.00, 360.00, 10.00, 3560.00, 3204.00),
 (53, 53, 53, 53, 3, 4, '2024-07-23', '2024-07-30', '2024-07-29', 3400.00, 380.00, 5.00, 3740.00, 3366.00),
@@ -457,7 +457,7 @@ VALUES
 (64, 64, 64, 64, 4, 5, '2024-08-03', '2024-08-10', '2024-08-09', 5600.00, 600.00, 10.00, 6200.00, 5580.00),
 (65, 65, 65, 65, 5, 1, '2024-08-04', '2024-08-11', '2024-08-10', 5800.00, 620.00, 15.00, 6700.00, 5695.00),
 (66, 66, 66, 66, 1, 2, '2024-08-05', '2024-08-12', '2024-08-11', 6000.00, 640.00, 20.00, 7200.00, 5760.00),
-(67, 67, 67, 67, 2, 3, '2024-08-06', '2024-08-13', '2024-08-12', 6200.00, 660.00, 10.00, 6860.00, 6174.00),
+(67, 67, 91, 67, 2, 3, '2024-08-06', '2024-08-13', '2024-08-12', 6200.00, 660.00, 10.00, 6860.00, 6174.00),
 (68, 68, 68, 68, 3, 4, '2024-08-07', '2024-08-14', '2024-08-13', 6400.00, 680.00, 5.00, 7040.00, 6336.00),
 (69, 69, 69, 69, 4, 5, '2024-08-08', '2024-08-15', '2024-08-14', 6600.00, 700.00, 10.00, 7300.00, 6570.00),
 (70, 70, 70, 70, 5, 1, '2024-08-09', '2024-08-16', '2024-08-15', 6800.00, 720.00, 15.00, 7820.00, 6646.00),
@@ -487,7 +487,7 @@ VALUES
 (94, 94, 94, 94, 4, 5, '2024-09-02', '2024-09-09', '2024-09-08', 11600.00, 1200.00, 10.00, 12810.00, 11529.00),
 (95, 95, 95, 95, 5, 1, '2024-09-03', '2024-09-10', '2024-09-09', 11800.00, 1220.00, 15.00, 13630.00, 11514.00),
 (96, 96, 96, 96, 1, 2, '2024-09-04', '2024-09-11', '2024-09-10', 12000.00, 1240.00, 20.00, 14400.00, 9600.00),
-(97, 97, 97, 97, 2, 3, '2024-09-05', '2024-09-12', '2024-09-11', 12200.00, 1260.00, 10.00, 13470.00, 12123.00),
+(97, 97, 91, 97, 2, 3, '2024-09-05', '2024-09-12', '2024-09-11', 12200.00, 1260.00, 10.00, 13470.00, 12123.00),
 (98, 98, 98, 98, 3, 4, '2024-09-06', '2024-09-13', '2024-09-12', 12400.00, 1280.00, 5.00, 13690.00, 12318.00),
 (99, 99, 99, 99, 4, 5, '2024-09-07', '2024-09-14', '2024-09-13', 12600.00, 1300.00, 10.00, 13910.00, 12519.00),
 (100, 100, 100, 100, 5, 1, '2024-09-08', '2024-09-15', '2024-09-14', 12800.00, 1320.00, 15.00, 14730.00, 12597.00);
@@ -513,31 +513,91 @@ GRANT SELECT, INSERT, UPDATE ON laboratorioTaller.clientes TO 'empleado'@'%';
 GRANT SELECT, INSERT, UPDATE ON laboratorioTaller.vehiculos TO 'empleado'@'%';
 GRANT SELECT, INSERT, UPDATE ON laboratorioTaller.alquileres TO 'empleado'@'%';
 
--- cliente puede mirar todos los vehiculos
+-- ##########################################
+-- ############ Consultas ###################
+-- ##########################################
 
--- cliente puede mirar su historial de alquileres con total y fechas 
+-- Consulta de disponibilidad de vehículos para alquiler por tipo de vehículo, rango de
+-- precios de alquiler y fechas de disponibilidad.
+
+SELECT v.id_vehiculo, v.tipo_vehiculo, v.placa, v.referencia, v.modelo, v.color, a.valor_semana, a.valor_dia
+FROM vehiculos v
+LEFT JOIN alquileres a ON v.id_vehiculo = a.id_vehiculo
+WHERE (a.fecha_salida IS NULL OR a.fecha_entrada < CURDATE())
+AND v.tipo_vehiculo = 'Sedán'
+AND a.valor_semana BETWEEN 500 AND 1000
+AND CURDATE() BETWEEN '2024-06-01' AND '2024-06-30';
+
+
+-- • Alquiler de vehículos.
+
+select *
+from vehiculos;
 
 
 
--- cliente puede mirar las especificaciones de un carro con el nombre del carro  
 
--- cliente puede mirar los empleados disponibles para solicitar ayuda en la sucursal que necesite 
+-- • Consulta de historial de alquileres.
 
--- empleado puede mirar historial de empleados por sucursal
- 
- -- empleado puede mirar historial de alquileres por sucursal
- 
- -- empleado puede mirar carros 
- 
- -- empleado puede mirar las veces que un empleado ha estado involucrado con un alquiler 
- 
- -- empleado puede mirar los alquileres donde se pago menos de lo cotizado 
- 
- -- empleado puede mirar los alquileres donde se pago mas de lo cotizado   
- 
- -- empleado puede mirar las veces que un cliente ha hecho un alquiler 
- 
- -- empleado puede mirar los quqileres por meses
+SELECT id_alquiler, fecha_entrada, fecha_salida, valor_pagado
+FROM alquileres
+WHERE id_cliente = 91;
+
+
+-- #################################
+-- ####### Funciones ###############
+-- #################################
+
+DELIMITER //
+
+CREATE FUNCTION calcular_valor_cotizado(tipo_vehiculo VARCHAR(50), dias INT)
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+    DECLARE valor_semana DECIMAL(10,2);
+    DECLARE valor_dia DECIMAL(10,2);
+    DECLARE semanas INT;
+    DECLARE dias_extras INT;
+    DECLARE valor_total DECIMAL(10,2);
+
+    SELECT valor_semana, valor_dia INTO valor_semana, valor_dia
+    FROM vehiculos v
+    JOIN alquileres a ON v.id_vehiculo = a.id_vehiculo
+    WHERE v.tipo_vehiculo = tipo_vehiculo
+    LIMIT 1;
+
+    SET semanas = FLOOR(dias / 7);
+    SET dias_extras = dias % 7;
+
+    SET valor_total = (semanas * valor_semana) + (dias_extras * valor_dia);
+
+    RETURN valor_total;
+END //
+
+DELIMITER ;
+
+-- Funcionn #2
+
+DELIMITER //
+
+CREATE FUNCTION calcular_valor_pagado(fecha_devolucion DATE, fecha_esperada_llegada DATE, valor_cotizado DECIMAL(10,2), valor_dia DECIMAL(10,2))
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+    DECLARE dias_retraso INT;
+    DECLARE valor_extra DECIMAL(10,2);
+
+    IF fecha_devolucion > fecha_esperada_llegada THEN
+        SET dias_retraso = DATEDIFF(fecha_devolucion, fecha_esperada_llegada);
+        SET valor_extra = dias_retraso * valor_dia * 1.08;
+        RETURN valor_cotizado + valor_extra;
+    ELSE
+        RETURN valor_cotizado;
+    END IF;
+END //
+
+DELIMITER ;
+
  
  
 
