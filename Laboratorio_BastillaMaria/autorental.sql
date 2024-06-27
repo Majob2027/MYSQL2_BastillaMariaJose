@@ -656,7 +656,93 @@ BEGIN
     END IF;
 END //
 
-DELIMITER ;
- drop trigger verificar_disponibilidad_vehiculo;
+-- Triggers y eventos 
 
-select * from alquileres;
+-- Trigger 
+
+-- Tabla verificacion
+
+DELIMITER $$
+
+DROP TRIGGER IF EXISTS trigger_check_modelo_before$$
+
+CREATE TRIGGER trigger_check_modelo_before
+BEFORE INSERT 
+ON vehiculos FOR EACH ROW
+BEGIN 
+    IF NEW.modelo < 2012 THEN 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El modelo no puede ser anterior a 2012.';
+    END IF;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+DROP TRIGGER IF EXISTS trigger_check_modelo_before$$
+
+CREATE TRIGGER trigger_check_modelo_before
+BEFORE update 
+ON vehiculos FOR EACH ROW
+BEGIN 
+    IF NEW.modelo < 2012 THEN 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'El modelo no puede ser anterior a 2012.';
+    END IF;
+END$$
+
+DELIMITER ;
+
+INSERT INTO vehiculos (id_vehiculo, tipo_vehiculo, placa, referencia, modelo, puertas, capacidad, sunroof, motor, color) 
+VALUES (102, 'Sedán', 'HIJ789', 'Volvo S90', 2010, 4, 5, TRUE, '2.0L', 'Azul Eléctrico');
+
+INSERT INTO vehiculos (id_vehiculo, tipo_vehiculo, placa, referencia, modelo, puertas, capacidad, sunroof, motor, color) 
+VALUES (101, 'SUV', 'EFG456', 'Lexus NX', 2009, 4, 5, TRUE, '2.5L', 'Gris Metálico');
+
+
+
+
+
+
+-- trigger para poner el la tabla de log el cambio de celular que han hecho los clientes
+
+CREATE TABLE log_cambios_celular (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    old_celular VARCHAR(100),
+    new_celular VARCHAR(100)
+);
+
+DELIMITER $$
+
+DROP TRIGGER IF EXISTS trigger_guardar_celular_after_update$$
+
+CREATE TRIGGER trigger_guardar_celular_after_update
+AFTER UPDATE ON clientes
+FOR EACH ROW
+BEGIN
+    IF OLD.celular <> NEW.celular THEN
+        INSERT INTO log_cambios_celular (id_cliente, old_celular, new_celular)
+        VALUES (OLD.id_cliente, OLD.celular, NEW.celular);
+    END IF;
+END$$
+
+DELIMITER ;
+
+select * from log_cambios_celular;
+select * from clientes;
+
+INSERT INTO clientes (id_cliente, nombre, apellido, cedula, direccion_residencia, ciudad_residencia, celular)
+VALUES (101, 'Juan', 'Perez', '123456789', 'Calle 123', 'Ciudad ABC', '0987654321');
+
+INSERT INTO clientes (id_cliente, nombre, apellido, cedula, direccion_residencia, ciudad_residencia, celular)
+VALUES (102, 'Maria', 'Gomez', '987654321', 'Av. Principal', 'Ciudad XYZ', '9876543210');
+
+UPDATE clientes 
+SET celular = '114275233' 
+WHERE id_cliente = 102;
+
+
+
