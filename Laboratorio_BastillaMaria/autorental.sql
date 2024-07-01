@@ -656,6 +656,117 @@ BEGIN
     END IF;
 END //
 
+
+
+
+
+
+-- #################################
+-- ####### Procedimiento ###########
+-- #################################
+
+
+
+DELIMITER // 
+
+  
+
+CREATE PROCEDURE registrar_alquiler( 
+
+    IN p_id_alquiler INT, 
+
+    IN p_id_vehiculo INT, 
+
+    IN p_id_cliente INT, 
+
+    IN p_id_empleado INT, 
+
+    IN p_id_sucursal_salida INT, 
+
+    IN p_id_sucursal_entrada INT, 
+
+    IN p_fecha_salida DATE, 
+
+    IN p_fecha_entrada DATE, 
+
+    IN p_fecha_esperada_llegada DATE, 
+
+    IN p_valor_semana DECIMAL(10,2), 
+
+    IN p_valor_dia DECIMAL(10,2), 
+
+    IN p_porcentaje_descuento DECIMAL(5,2), 
+
+    IN p_valor_cotizado DECIMAL(10,2), 
+
+    IN p_valor_pagado DECIMAL(10,2) 
+
+) 
+
+BEGIN 
+
+    INSERT INTO alquileres ( 
+
+        id_alquiler, id_vehiculo, id_cliente, id_empleado, id_sucursal_salida, 
+
+        id_sucursal_entrada, fecha_salida, fecha_entrada, fecha_esperada_llegada, 
+
+        valor_semana, valor_dia, porcentaje_descuento, valor_cotizado, valor_pagado 
+
+    ) 
+
+    VALUES ( 
+
+        p_id_alquiler, p_id_vehiculo, p_id_cliente, p_id_empleado, p_id_sucursal_salida, 
+
+        p_id_sucursal_entrada, p_fecha_salida, p_fecha_entrada, p_fecha_esperada_llegada, 
+
+        p_valor_semana, p_valor_dia, p_porcentaje_descuento, p_valor_cotizado, p_valor_pagado 
+
+    ); 
+
+END // 
+
+  
+
+DELIMITER ; 
+
+ 
+ 
+-- #################################
+-- ########### Eventos #############
+-- #################################
+
+
+
+ DELIMITER // 
+
+  
+
+CREATE EVENT actualizar_estado_alquileres_vencidos 
+
+ON SCHEDULE EVERY 1 DAY 
+
+STARTS '2024-07-01 00:00:00' 
+
+DO 
+
+BEGIN 
+
+    UPDATE alquileres 
+
+    SET valor_pagado = valor_pagado + (DATEDIFF(CURDATE(), fecha_esperada_llegada) * valor_dia * 1.08) 
+
+    WHERE fecha_esperada_llegada < CURDATE() AND fecha_entrada IS NULL; 
+
+END // 
+
+  
+
+DELIMITER ; 
+
+
+
 -- Triggers y eventos 
 
 -- Trigger 
